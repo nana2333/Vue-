@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+  </style>
+</head>
+<body>
+<div id="example">
+  <h2>1.绑定监听</h2>
+  <button @click="test1">test1</button>
+  <button @click="test2('atguigu')">test2</button>
+  <button @click="test3('xxx',$event)">test3</button>
+  <h2>2.事件修饰符</h2>
+  <div style="width: 200px;height:200px;background: pink" @click="test4">
+  <div style="width: 100px;height: 100px;background: lightskyblue" @click.stop="test5">
+  </div>
+  </div>
+  <h2>3.按键修饰符</h2>
+  <input type="text" @keyup="test6">
+  <input type="text" @keyup.enter="test7">
+  <input type="text" @keyup.65="test8">
+</div>
+
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+
+<script type="text/javascript">
+new Vue({
+  el:'#example',
+  data:{
+  },
+  methods:{
+    test1 (event){
+      alert(event.target.textContent)
+    },
+    test2 (content){
+      alert(content)
+    },
+    test3 (content,e){
+      alert(content+'---'+e.target.innerText)
+    },
+    test4(){
+      alert('外部')
+    },
+    test5(){
+      alert('内部')
+    },
+    test6(event){
+      if(event.keyCode==13){
+        alert(event.target.value+'----'+event.keyCode)
+      }
+    },
+    test7(event){
+      alert(event.target.value+'----'+event.keyCode)
+    },
+    test8(event){
+      alert(event.target.value)
+    }
+  }
+
+})
+</script>
+</html>

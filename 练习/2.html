@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+  </style>
+</head>
+<body>
+<div id="demo">
+  <form action="/xxx">
+    <span>用户名: </span>
+    <input type="text" v-model="user.userName"><br>
+
+    <span>密码: </span>
+    <input type="password" v-model="user.pwd"><br>
+
+    <span>性别: </span>
+    <input type="radio" id="female" value="女" v-model="user.sex">
+    <label for="female">女</label>
+    <input type="radio" id="male" value="男" v-model="user.sex" >
+    <label for="male">男</label><br>
+
+    <span>爱好: </span>
+    <input type="checkbox" id="basket" value="basket" v-model="user.like" >
+    <label for="basket">篮球</label>
+    <input type="checkbox" id="foot" value="foot" v-model="user.like">
+    <label for="foot">足球</label>
+    <input type="checkbox" id="pingpang" value="pingpang" v-model="user.like">
+    <label for="pingpang">乒乓</label><br>
+
+    <span>城市: </span>
+    <select v-model="user.cityId">
+      <option value="" >未选择</option>
+      <option :value="city.id" v-for="(city,index) in allCity " :key="city.id">{{city.name}}</option>
+    </select><br>
+    <span>介绍: </span>
+    <textarea rows="10" v-model="user.Info"></textarea><br><br>
+
+    <input type="submit" value="注册" @click.prevent="register">
+  </form>
+</div>
+
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script>
+  new Vue({
+    el:'#demo',
+    data:{
+      user:{
+        userName:'',
+        pwd:'',
+        sex:'女',
+        like:['basket'],
+        cityId:'',
+        Info:''
+      },
+      allCity:[
+        {id:1,name:'BJ'},
+        {id:2,name:'SH'},
+        {id:3,name:'GD'}
+      ]
+    },
+    methods:{
+      register(){
+        console.log(this.user);
+        alert('发送ajax请求')
+      }
+    }
+  })
+
+</script>
+</html>
